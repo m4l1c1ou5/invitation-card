@@ -33,8 +33,8 @@ function App() {
   useEffect(() => {
     // Since we don't have an actual train sound file, we'll just create a placeholder effect
     const trainSound = new Howl({
-      src: ['data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU'],
-      loop: true,
+      src: ['./latest.wav'],
+      loop: false,
       volume: 0.5,
     });
     setSound(trainSound);
