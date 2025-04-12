@@ -7,12 +7,8 @@ const PhotoGallery = ({ isOpen, onClose, isMobile }) => {
   
   // Sample placeholder images (replace with actual event photos)
   const images = [
-    { id: 1, src: "https://source.unsplash.com/300x300/?baby,indian", alt: "Mudrika's Ceremony 1" },
-    { id: 2, src: "https://source.unsplash.com/300x300/?ceremony,celebration", alt: "Mudrika's Ceremony 2" },
-    { id: 3, src: "https://source.unsplash.com/300x300/?baby,celebration", alt: "Mudrika's Ceremony 3" },
-    { id: 4, src: "https://source.unsplash.com/300x300/?child,indian", alt: "Mudrika's Ceremony 4" },
-    { id: 5, src: "https://source.unsplash.com/300x300/?hindu,ceremony", alt: "Mudrika's Ceremony 5" },
-    { id: 6, src: "https://source.unsplash.com/300x300/?family,celebration", alt: "Mudrika's Ceremony 6" },
+    { id: 1, src: "https://www.royalistichardware.com/img/noor/1.jpeg", alt: "Mudrika" },
+    { id: 2, src: "https://www.royalistichardware.com/img/noor/2.jpeg", alt: "Mudrika" },
   ];
 
   const openImage = (image) => {
