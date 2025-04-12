@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  font-family: 'Comic Sans MS', 'Chilanka', 'Marker Felt', fantasy;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f8ff;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');

@@ -1,0 +1,38 @@
+.balloons-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.balloon {
+  position: absolute;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  will-change: transform;
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+}
+
+.balloon::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: inherit;
+  border-radius: 50%;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.balloon-string {
+  position: absolute;
+  width: 1px;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.3);
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+}

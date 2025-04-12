@@ -1,0 +1,575 @@
+.ceremony-card {
+  width: 100%;
+  max-width: 800px;
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  /* Ensure card is above the train during animation */
+  z-index: 20;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.9) 70%, rgba(255,255,255,0.8) 100%), 
+                    radial-gradient(#e0e0e0 15%, transparent 16%), 
+                    radial-gradient(#e0e0e0 15%, transparent 16%);
+  background-size: 100% 100%, 30px 30px, 30px 30px;
+  background-position: 0 0, 0 0, 15px 15px;
+}
+
+.ceremony-card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(45deg, 
+    rgba(255, 223, 0, 0.05), 
+    rgba(255, 223, 0, 0.05) 10px, 
+    rgba(255, 105, 180, 0.05) 10px, 
+    rgba(255, 105, 180, 0.05) 20px
+  );
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.chugga-text, .choo-text {
+  font-family: 'Bubblegum Sans', cursive;
+  margin: 5px 0;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  text-shadow: 2px 2px 0 #ffffff, 3px 3px 0 #000000;
+  -webkit-text-stroke: 1px #333;
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.letter {
+  display: inline-block;
+  margin: 0 2px;
+  transform-origin: center;
+}
+
+.train-tracks {
+  height: 20px;
+  background: repeating-linear-gradient(90deg, 
+    #8b4513 0px, 
+    #8b4513 10px, 
+    transparent 10px, 
+    transparent 20px
+  );
+  position: relative;
+  margin: 20px 0;
+  border-top: 3px solid #8b4513;
+  border-bottom: 3px solid #8b4513;
+}
+
+.train-tracks:before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: repeating-linear-gradient(90deg, 
+    #555 0px, 
+    #555 15px, 
+    transparent 15px, 
+    transparent 30px
+  );
+}
+
+.train-tracks:after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: repeating-linear-gradient(90deg, 
+    #555 0px, 
+    #555 15px, 
+    transparent 15px, 
+    transparent 30px
+  );
+}
+
+.card-content {
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+.all-aboard {
+  font-family: 'Bubblegum Sans', cursive;
+  color: #ff6b00;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  text-shadow: 1px 1px 0 #ffffff, 2px 2px 0 #000000;
+  letter-spacing: 1px;
+  transform: rotate(-2deg);
+}
+
+.child-name {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.name-letter {
+  display: inline-block;
+  margin: 0 5px;
+  text-shadow: 2px 2px 0 #ffffff, 3px 3px 0 #000000;
+  -webkit-text-stroke: 1px #333;
+}
+
+.ceremony-badge {
+  background-color: #ff4757;
+  color: white;
+  font-family: 'Bubblegum Sans', cursive;
+  padding: 5px 20px;
+  border-radius: 30px;
+  display: inline-block;
+  margin: 20px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  transform: rotate(-2deg);
+}
+
+.ceremony-badge h3 {
+  margin: 0;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  letter-spacing: 1px;
+}
+
+.ceremony-badge:before {
+  content: '✂';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.ceremony-badge:after {
+  content: '✂';
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%) scaleX(-1);
+  font-size: 20px;
+}
+
+.details-section {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.detail-item {
+  background-color: #f8f9fa;
+  border-radius: 15px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detail-item:hover {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.detail-icon {
+  font-size: 28px;
+}
+
+.detail-text {
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  color: #333;
+}
+
+.railway-crossing {
+  position: absolute;
+  bottom: -10px;
+  right: 30px;
+  transform: rotate(-10deg);
+}
+
+.crossing-bar {
+  width: 60px;
+  height: 8px;
+  background: linear-gradient(90deg, #ff4757 50%, #ffffff 50%);
+  background-size: 16px 16px;
+  transform-origin: left;
+  animation: crossingBarMove 5s infinite alternate ease-in-out;
+}
+
+.crossing-light {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  top: -20px;
+  left: 0;
+  box-shadow: 0 0 10px red;
+  animation: blinkLight 1s infinite;
+}
+
+@keyframes crossingBarMove {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes blinkLight {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0.5;
+  }
+}
+
+/* Add a pull handle for the train to grab */
+.pull-handle {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: #34495e;
+  border-radius: 50%;
+  top: 50%;
+  border: 3px solid #2c3e50;
+}
+
+/* Left handle - positioned differently for better visual connection with train rope */
+.left-handle {
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+/* Right handle for visual connection */
+.right-handle {
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.venue-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  background-color: #f0f6ff !important; /* Slightly different background to indicate it's interactive */
+  border: 1px solid #d0e1ff;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.venue-link:hover, .venue-link:focus {
+  background-color: #e0edff !important;
+  box-shadow: 0 6px 16px rgba(0, 100, 255, 0.15) !important;
+  text-decoration: none;
+  color: inherit;
+}
+
+.venue-link:active {
+  transform: scale(0.98);
+}
+
+.map-indicator {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 14px;
+  vertical-align: middle;
+  animation: bounce-subtle 2s infinite;
+}
+
+/* Styling for clickable venue link and phone link */
+.venue-link,
+.phone-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  background-color: #f0f6ff !important;
+  border: 1px solid #d0e1ff;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.venue-link:hover, .venue-link:focus,
+.phone-link:hover, .phone-link:focus {
+  background-color: #e0edff !important;
+  box-shadow: 0 6px 16px rgba(0, 100, 255, 0.15) !important;
+  text-decoration: none;
+  color: inherit;
+}
+
+.venue-link:active,
+.phone-link:active {
+  transform: scale(0.98);
+}
+
+.map-indicator,
+.phone-indicator {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 14px;
+  vertical-align: middle;
+  animation: bounce-subtle 2s infinite;
+}
+
+.phone-link {
+  background-color: #fff0f0 !important; /* Slightly different background color for phone links */
+  border: 1px solid #ffd0d0;
+}
+
+.phone-link:hover, .phone-link:focus {
+  background-color: #ffe0e0 !important;
+  box-shadow: 0 6px 16px rgba(255, 100, 100, 0.15) !important;
+}
+
+@media (max-width: 768px) {
+  .ceremony-card {
+    padding: 20px;
+  }
+  
+  .details-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .left-handle {
+    /* Adjust position on mobile to better align with train rope */
+    top: 45%;
+  }
+  
+  .right-handle {
+    /* Adjust position on mobile for symmetry */
+    top: 45%;
+  }
+
+  .map-indicator {
+    display: block;
+    margin-top: 5px;
+    margin-left: 0;
+  }
+  
+  .mobile-card .venue-link .detail-text {
+    padding-bottom: 5px;
+  }
+
+  .map-indicator,
+  .phone-indicator {
+    display: block;
+    margin-top: 5px;
+    margin-left: 0;
+  }
+  
+  .mobile-card .venue-link .detail-text,
+  .mobile-card .phone-link .detail-text {
+    padding-bottom: 5px;
+  }
+
+  /* Increase tappable area on phone links for mobile */
+  .phone-link {
+    min-height: 80px;
+  }
+  
+  .mobile-card .venue-link .detail-text {
+    padding-bottom: 5px;
+  }
+
+  .gallery-button {
+    margin: 15px auto 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* Enhanced mobile styling */
+.mobile-card {
+  padding: 15px;
+  margin: 0 5px;
+  max-height: 85vh; /* Reduce from 90vh to 85vh to prevent overflow issues */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+  /* Ensure higher z-index for mobile */
+  z-index: 25;
+}
+
+.mobile-card .chugga-text, 
+.mobile-card .choo-text {
+  font-size: clamp(1.5rem, 8vw, 2rem);
+  margin: 2px 0;
+}
+
+.mobile-card .all-aboard {
+  font-size: clamp(1rem, 5vw, 1.5rem);
+  margin-bottom: 10px;
+}
+
+.mobile-card .child-name {
+  font-size: clamp(2rem, 10vw, 3rem);
+}
+
+.mobile-card .name-letter {
+  margin: 0 2px;
+}
+
+.mobile-card .ceremony-badge {
+  margin: 10px 0;
+  padding: 3px 15px;
+}
+
+.mobile-card .ceremony-badge h3 {
+  font-size: clamp(1rem, 5vw, 1.3rem);
+}
+
+.mobile-card .details-section {
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.mobile-card .detail-item {
+  padding: 10px;
+  min-height: 70px;
+}
+
+.mobile-card .detail-icon {
+  font-size: 24px;
+  margin-bottom: 3px;
+}
+
+.mobile-card .detail-text {
+  font-size: 14px;
+}
+
+.mobile-card .railway-crossing {
+  right: 15px;
+  bottom: -5px;
+}
+
+@media (max-width: 480px) {
+  .ceremony-card {
+    padding: 15px;
+  }
+  
+  .details-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .detail-item {
+    min-height: 80px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .detail-icon {
+    margin-bottom: 5px;
+  }
+  
+  .detail-text {
+    font-size: 12px;
+    line-height: 1.2;
+  }
+}
+
+/* Fix for mobile landscape mode */
+@media (max-height: 500px) and (orientation: landscape) {
+  .ceremony-card {
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  
+  .details-section {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  
+  .chugga-text, .choo-text {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  
+  .all-aboard {
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+  
+  .child-name {
+    font-size: 2rem;
+    margin: 5px 0;
+  }
+}
+
+/* Gallery button styling */
+.gallery-button {
+  margin: 25px auto 5px;
+  padding: 12px 25px;
+  background: linear-gradient(to right, #3498db, #9b59b6);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  animation: pulseLight 2s infinite;
+}
+
+.gallery-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-button-icon {
+  font-size: 22px;
+}
+
+@keyframes pulseLight {
+  0% {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(52, 152, 219, 0.4);
+  }
+  100% {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+}

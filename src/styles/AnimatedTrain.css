@@ -1,0 +1,633 @@
+.train-container {
+  position: relative;
+  z-index: 25;
+  will-change: transform;
+  pointer-events: auto;
+}
+
+/* Reduce z-index when train is moving so card can appear above it */
+.train-moving {
+  z-index: 5;
+}
+
+.clickable-train {
+  cursor: pointer;
+  position: relative;
+}
+
+/* Add a glowing effect to indicate clickability */
+.clickable-train::after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%);
+  animation: glow 2s infinite alternate;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes glow {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.8; }
+}
+
+/* Realistic train styling */
+.realistic-train {
+  display: flex;
+  height: 120px;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
+  position: relative;
+}
+
+/* Locomotive styling */
+.locomotive {
+  width: 180px;
+  height: 100px;
+  position: relative;
+  z-index: 10;
+}
+
+.boiler {
+  width: 140px;
+  height: 60px;
+  background: linear-gradient(to bottom, #1e272e 60%, #2d3436 100%);
+  border-radius: 30px 30px 0 0;
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  border: 2px solid #0a0a0a;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.boiler-bands {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.boiler-band {
+  width: 100%;
+  height: 5px;
+  background-color: #484848;
+  position: absolute;
+  border-radius: 30px;
+}
+
+.boiler-band:nth-child(1) { top: 10px; }
+.boiler-band:nth-child(2) { top: 25px; }
+.boiler-band:nth-child(3) { top: 40px; }
+
+.chimney {
+  width: 22px;
+  height: 35px;
+  background-color: #1e272e;
+  position: absolute;
+  top: -30px;
+  left: 20px;
+  border: 2px solid #0a0a0a;
+  box-sizing: border-box;
+}
+
+.chimney-top {
+  width: 28px;
+  height: 8px;
+  background-color: #0a0a0a;
+  position: absolute;
+  top: -8px;
+  left: -5px;
+  border-radius: 3px;
+}
+
+.smoke-hole {
+  width: 14px;
+  height: 8px;
+  background-color: #000;
+  position: absolute;
+  top: -5px;
+  left: 4px;
+  border-radius: 50% 50% 0 0;
+}
+
+.steam-dome {
+  width: 25px;
+  height: 25px;
+  background-color: #d35400;
+  border-radius: 50%;
+  position: absolute;
+  top: -20px;
+  left: 60px;
+  border: 2px solid #0a0a0a;
+  box-sizing: border-box;
+}
+
+.steam-whistle {
+  width: 8px;
+  height: 15px;
+  background-color: #d4a017;
+  position: absolute;
+  top: -12px;
+  left: 95px;
+  border: 1px solid #0a0a0a;
+  z-index: 2;
+}
+
+.headlight {
+  width: 15px;
+  height: 15px;
+  background-color: #f9ca24;
+  border-radius: 50%;
+  position: absolute;
+  top: 22px;
+  left: -10px;
+  box-shadow: 0 0 10px #f9ca24;
+  border: 2px solid #7f8c8d;
+  z-index: 2;
+}
+
+.pilot-cowcatcher {
+  width: 25px;
+  height: 20px;
+  background: linear-gradient(45deg, transparent 50%, #7f8c8d 50%),
+              linear-gradient(-45deg, transparent 50%, #7f8c8d 50%);
+  background-size: 10px 10px, 10px 10px;
+  background-position: top left, top right;
+  position: absolute;
+  bottom: 0;
+  left: -25px;
+  z-index: 1;
+}
+
+.cabin {
+  width: 50px;
+  height: 70px;
+  background-color: #c0392b;
+  position: absolute;
+  right: -10px;
+  bottom: 0;
+  border: 2px solid #0a0a0a;
+  box-sizing: border-box;
+  z-index: 5;
+}
+
+.cabin-window {
+  width: 25px;
+  height: 20px;
+  background-color: #d5f9fe;
+  border-radius: 5px;
+  position: absolute;
+  top: 15px;
+  left: 12px;
+  border: 3px solid #7f8c8d;
+}
+
+.cabin-door {
+  width: 15px;
+  height: 30px;
+  background-color: #2c3e50;
+  position: absolute;
+  bottom: 0;
+  left: 17px;
+  border-top: 2px solid #0a0a0a;
+}
+
+.cabin-roof {
+  width: 60px;
+  height: 10px;
+  background-color: #2c3e50;
+  position: absolute;
+  top: -10px;
+  left: -5px;
+  border: 2px solid #0a0a0a;
+  box-sizing: border-box;
+}
+
+.undercarriage {
+  width: 140px;
+  height: 15px;
+  background-color: #7f8c8d;
+  position: absolute;
+  bottom: 5px;
+  left: 30px;
+  border: 1px solid #0a0a0a;
+}
+
+.cylinder {
+  width: 30px;
+  height: 12px;
+  background-color: #5d6d7e;
+  position: absolute;
+  bottom: 10px;
+  border: 1px solid #0a0a0a;
+}
+
+.left-cylinder { left: 40px; }
+.right-cylinder { left: 80px; }
+
+/* Tender styling */
+.tender {
+  width: 100px;
+  height: 60px;
+  position: relative;
+  margin-left: 5px;
+  margin-top: 20px;
+  z-index: 9;
+}
+
+.tender-body {
+  width: 100%;
+  height: 100%;
+  background-color: #2c3e50;
+  border-radius: 5px;
+  border: 2px solid #0a0a0a;
+  box-sizing: border-box;
+}
+
+.coal-pile {
+  width: 80px;
+  height: 25px;
+  background: linear-gradient(to bottom, #0a0a0a, #2d3436);
+  border-radius: 50% 50% 5px 5px / 30% 30% 5px 5px;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+}
+
+.tender-side-panel {
+  width: 90%;
+  height: 15px;
+  background-color: #c0392b;
+  position: absolute;
+  bottom: 5px;
+  left: 5%;
+  border-top: 2px solid #0a0a0a;
+  border-left: 2px solid #0a0a0a;
+  border-right: 2px solid #0a0a0a;
+  box-sizing: border-box;
+}
+
+/* Passenger Car styling */
+.passenger-car {
+  width: 120px;
+  height: 70px;
+  position: relative;
+  margin-left: 5px;
+  margin-top: 10px;
+  z-index: 8;
+}
+
+.passenger-body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #e67e22 60%, #d35400 100%);
+  border-radius: 5px;
+  border: 2px solid #0a0a0a;
+  box-sizing: border-box;
+}
+
+.passenger-windows {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+  padding: 0 5px;
+}
+
+.p-window {
+  width: 20px;
+  height: 20px;
+  background-color: #d5f9fe;
+  border-radius: 3px;
+  border: 2px solid #7f8c8d;
+}
+
+.passenger-door {
+  width: 15px;
+  height: 25px;
+  background-color: #2c3e50;
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+  border-top: 2px solid #0a0a0a;
+}
+
+.passenger-steps {
+  width: 5px;
+  height: 5px;
+  background-color: #7f8c8d;
+  position: absolute;
+  bottom: 0;
+  right: 25px;
+}
+
+/* Caboose styling */
+.caboose {
+  width: 80px;
+  height: 65px;
+  position: relative;
+  margin-left: 5px;
+  margin-top: 15px;
+  z-index: 7;
+}
+
+.caboose-body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #c0392b 60%, #922b21 100%);
+  border-radius: 5px;
+  border: 2px solid #0a0a0a;
+  box-sizing: border-box;
+}
+
+.caboose-windows {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+  padding: 0 5px;
+}
+
+.c-window {
+  width: 20px;
+  height: 15px;
+  background-color: #d5f9fe;
+  border-radius: 3px;
+  border: 2px solid #7f8c8d;
+}
+
+.caboose-cupola {
+  width: 40px;
+  height: 20px;
+  background-color: #c0392b;
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  border: 2px solid #0a0a0a;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.cupola-window {
+  width: 15px;
+  height: 10px;
+  background-color: #d5f9fe;
+  position: absolute;
+  top: 5px;
+  left: 12px;
+  border: 2px solid #7f8c8d;
+  border-radius: 2px;
+}
+
+.connector {
+  width: 10px;
+  height: 10px;
+  background-color: #7f8c8d;
+  position: absolute;
+  top: 40px;
+  right: -10px;
+  z-index: 1;
+  border: 1px solid #0a0a0a;
+}
+
+/* Wheels and mechanical parts */
+.wheels {
+  position: absolute;
+  bottom: -20px;
+  width: 100%;
+  height: 50px;
+}
+
+.wheel {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  background: radial-gradient(circle at center, #7f8c8d, #34495e);
+  border: 3px solid #2c3e50;
+  box-sizing: border-box;
+}
+
+.drive-wheel {
+  width: 40px;
+  height: 40px;
+  background-color: #c0392b; /* Red rims for drive wheels */
+  border: 3px solid #2c3e50;
+}
+
+.small-wheel {
+  width: 20px;
+  height: 20px;
+  background-color: #7f8c8d;
+  border: 2px solid #2c3e50;
+}
+
+.wheel-inner {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.wheel-spoke {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: #2c3e50;
+  top: calc(50% - 2px);
+  left: 0;
+}
+
+.wheel-spoke:nth-child(1) { transform: rotate(0deg); }
+.wheel-spoke:nth-child(2) { transform: rotate(60deg); }
+.wheel-spoke:nth-child(3) { transform: rotate(120deg); }
+
+.wheel-center {
+  width: 10px;
+  height: 10px;
+  background-color: #0a0a0a;
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 5px);
+  left: calc(50% - 5px);
+  box-shadow: 0 0 3px rgba(255,255,255,0.5);
+}
+
+.connecting-rod {
+  width: 90px;
+  height: 5px;
+  background-color: #95a5a6;
+  position: absolute;
+  bottom: 20px;
+  left: 55px;
+  transform-origin: 10% 50%;
+  border-radius: 2px;
+  border: 1px solid #7f8c8d;
+  z-index: 2;
+}
+
+.piston-rod {
+  width: 35px;
+  height: 4px;
+  background-color: #7f8c8d;
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  border-radius: 2px;
+  border: 1px solid #5d6d7e;
+  z-index: 1;
+}
+
+/* Wheel positioning */
+.wheel-1 { left: 50px; }
+.wheel-2 { left: 115px; }
+.wheel-3 { left: 165px; z-index: 2; }
+.wheel-4 { left: 200px; }
+.wheel-5 { left: 235px; }
+.wheel-6 { left: 270px; }
+.wheel-7 { left: 325px; }
+.wheel-8 { left: 360px; }
+
+/* Smoke styling */
+.smoke {
+  position: fixed;
+  width: 25px;
+  height: 25px;
+  background: radial-gradient(circle, rgba(255,255,255,0.9), rgba(200,200,200,0.8));
+  border-radius: 50%;
+  animation: smokeRise 4s forwards;
+  z-index: 100;
+  filter: blur(2px);
+}
+
+@keyframes smokeRise {
+  0% {
+    opacity: 1;
+    transform: scale(0.5) translateY(0) translateX(0);
+  }
+  25% {
+    opacity: 0.9;
+    transform: scale(1) translateY(-25px) translateX(10px);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.8) translateY(-50px) translateX(20px);
+  }
+  75% {
+    opacity: 0.4;
+    transform: scale(2.5) translateY(-75px) translateX(30px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(3) translateY(-100px) translateX(40px);
+  }
+}
+
+/* Rope styling */
+.rope {
+  position: absolute;
+  width: 100px; 
+  height: 3px;
+  background-color: #5d6d7e;
+  right: -100px;
+  top: 40px;
+  z-index: 1;
+}
+
+.last-wagon-rope {
+  right: -70px;
+  top: 30px;
+  width: 70px;
+}
+
+.first-wagon-rope {
+  width: 50px;
+  right: -50px;
+  top: 30px;
+}
+
+@keyframes ropePull {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(1.1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.train-container:not(.clickable-train) .rope {
+  animation: ropePull 1s infinite;
+  transform-origin: left;
+}
+
+/* Mobile styling adaptations */
+.mobile-train {
+  bottom: auto;
+  transform: scale(0.7);
+  transform-origin: center center;
+}
+
+@media (max-width: 768px) {
+  .train-container {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%) scale(0.7);
+  }
+  
+  .train-moving {
+    z-index: 1;
+  }
+  
+  @keyframes smokeRise {
+    0% {
+      opacity: 0.9;
+      transform: scale(0.5) translateY(0) translateX(0);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.5) translateY(-35px) translateX(15px);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(2) translateY(-60px) translateX(25px);
+    }
+  }
+  
+  .smoke {
+    animation: smokeRise 2.5s forwards;
+  }
+  
+  .rope {
+    width: 50px;
+    right: -50px;
+  }
+}
+
+@media (max-width: 375px) {
+  .mobile-train {
+    transform: scale(0.5);
+  }
+  
+  .smoke {
+    width: 15px !important;
+    height: 15px !important;
+  }
+  
+  /* Simplify train for very small screens */
+  .cabin-door,
+  .passenger-door,
+  .passenger-steps,
+  .cupola-window {
+    display: none;
+  }
+  
+  .boiler-band:nth-child(2) { display: none; }
+}
