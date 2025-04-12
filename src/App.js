@@ -22,7 +22,7 @@ function App() {
 
   // Card details - can be customized
   const cardDetails = {
-    childName: "MUDRIKA",
+    childName: "MUDRIKA'S",
     ceremony: "MUNDAN CEREMONY",
     date: "23RD MAY",
     time: "7:00 PM TO 11:00 PM",
