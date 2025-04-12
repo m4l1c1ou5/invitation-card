@@ -8,6 +8,7 @@ import FloatingBalloons from './components/FloatingBalloons';
 import MovingClouds from './components/MovingClouds';
 import useWindowSize from './hooks/useWindowSize';
 import useMobileDetect from './hooks/useMobileDetect';
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const [sound, setSound] = useState(null);
