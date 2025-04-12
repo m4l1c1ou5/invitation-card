@@ -26,7 +26,7 @@ function App() {
     ceremony: "MUNDAN CEREMONY",
     date: "23RD MAY",
     time: "7:00 PM TO 11:00 PM",
-    venue: "Pamela Banquet, Kanpur",
+    venue: "Pamela Green Lawn, Kanpur",
     rsvp: "9889166661"
   };
 
