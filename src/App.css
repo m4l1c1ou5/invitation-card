@@ -41,7 +41,7 @@
 
 .train-intro-text {
   position: absolute;
-  top: 20%;
+  top: 15%; /* Changed from 30% to move text higher */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -205,6 +205,17 @@
   letter-spacing: 1px;
 }
 
+.highlight-text {
+  background: linear-gradient(to bottom, transparent 40%, rgba(255, 235, 59, 0.6) 40%, rgba(255, 235, 59, 0.6) 80%, transparent 80%);
+  padding: 0 4px;
+  margin: 0 -2px;
+  font-weight: bold;
+  text-shadow: 2px 2px 0 white, 3px 3px 2px rgba(0,0,0,0.1);
+  position: relative;
+  /* Adding color animation with blinking effect */
+  animation: theme-color-blink 2s infinite;
+}
+
 @keyframes wiggle {
   0%, 100% {
     transform: rotate(-5deg);
@@ -261,6 +272,25 @@
   }
 }
 
+/* Animation to cycle through theme colors with blinking */
+@keyframes theme-color-blink {
+  0%, 100% {
+    color: #ff6b00; /* Orange - matches the train theme */
+  }
+  20% {
+    color: #3498db; /* Blue - matches train engine */
+  }
+  40% {
+    color: #e74c3c; /* Red - matches caboose */
+  }
+  60% {
+    color: #27ae60; /* Green - matches wagons */
+  }
+  80% {
+    color: #9b59b6; /* Purple - additional theme color */
+  }
+}
+
 /* Mobile-specific styling */
 @media (max-width: 768px) {
   .app {
@@ -292,14 +322,14 @@
   }
   
   .train-intro-text {
-    top: 10%;
-    width: 90%;
-    padding: 0 10px;
+    top: 15%; /* Changed from 25% to move text higher on mobile */
+    width: 95%;
+    padding: 0 5px;
   }
   
   .train-intro-text h2 {
-    font-size: clamp(1.5rem, 5vw, 2.2rem); /* Increased from 1.1rem to 1.5rem */
-    margin-bottom: 12px;
+    font-size: clamp(2.2rem, 7vw, 3rem); /* Increased from previous value */
+    margin-bottom: 15px;
     line-height: 1.3;
     font-weight: bold;
     text-shadow: 3px 3px 0 white;
@@ -308,6 +338,10 @@
   .childish-text {
     font-size: 125%; /* Increased from 115% to 125% */
     text-shadow: 3px 3px 0 #ffd166, 4px 4px 0 #2c3e50; /* Enhanced shadow for better visibility */
+  }
+
+  .highlight-text {
+    animation: theme-color-blink 1.5s infinite; /* Slightly faster animation on mobile */
   }
 
   /* Faster transitions on mobile */
@@ -334,6 +368,15 @@
   
   .reset-button {
     animation: pulse-button 2s infinite ease-in-out;
+  }
+}
+
+@media (max-width: 480px) {
+  .train-intro-text h2 {
+    font-size: clamp(2rem, 8vw, 3rem);
+    line-height: 1.4;
+    margin-bottom: 20px; /* Added more space below text */
+    margin-top: -15px; /* Shift slightly higher on very small screens */
   }
 }
 

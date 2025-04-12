@@ -105,7 +105,7 @@ function App() {
         <div className={`train-page ${showCard ? 'train-exiting' : ''}`}>
           <div className="train-intro-text">
             <h2>
-              Tap on the train to onboard the <span className="childish-text">mundan</span> express
+              <span className="highlight-text">Tap on the train</span> to onboard the <span className="childish-text">mundan</span> express
             </h2>
           </div>
           <AnimatedTrain 
